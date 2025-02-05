@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<hibernate-configuration>
+    <session-factory>
+        <!-- Configuración de la conexión a la base de datos -->
+        <property name="hibernate.c3p0.driverClass">com.mysql.cj.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/bibliotecaFX</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+
+        <!-- Desactivar la impresión de SQL en los logs -->
+        <property name="hibernate.show_sql">false</property>
+
+        <!-- No mostrar estadísticas de Hibernate -->
+        <property name="hibernate.generate_statistics">false</property>
+
+        <!-- Desactivar la validación de esquemas, para evitar información extra -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+
+        <!-- Mappings -->
+        <mapping class="com.example.bibliotecafx.modelo.entities.Autor"/>
+    </session-factory>
+</hibernate-configuration>
