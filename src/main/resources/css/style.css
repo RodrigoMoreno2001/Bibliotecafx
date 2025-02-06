@@ -1,0 +1,72 @@
+
+#body {
+     -fx-background-color: linear-gradient(rgba(136,107,64,1) 0%, rgba(119,95,61,1) 50%, rgba(85,73,55,1) 100%);
+}
+
+#titulo{
+    -fx-text-fill:#000;
+}
+
+#textoInicio{
+    -fx-text-fill:#000;
+    -fx-background-color:rgba(0,0,0,0.1);
+}
+
+.boton{
+    -fx-background-color:rgba(0,0,0,0.05);
+    -fx-border-color: #000;
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
+    -fx-font-size:31px;
+    -fx-text-fill:#000;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 12px;
+}
+
+.boton:hover {
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+    -fx-background-color:rgba(255,255,255,0.1);
+    -fx-border-color: #fff;
+    -fx-border-width: 2px;
+    -fx-border-style: solid;
+}
+
+
+
+
+/*Estilos de tablas*/
+
+.table-view {
+    -fx-background-color: #f4f4f4;
+}
+
+.table-column {
+    -fx-alignment: CENTER;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: linear-gradient(to bottom, #4a90e2, #357abd);
+}
+
+.table-view .column-header {
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #e0e0e0;
+}
+
+.table-row-cell:even {
+    -fx-background-color: #ffffff;
+}
+
+.table-row-cell:hover {
+    -fx-background-color: #c4c4c4;
+}
+
+.table-row-cell:filled:selected {
+    -fx-background-color: #000;
+    -fx-text-fill: white;
+}

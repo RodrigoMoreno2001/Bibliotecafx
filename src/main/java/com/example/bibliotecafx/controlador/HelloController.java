@@ -1,20 +1,40 @@
 package com.example.bibliotecafx.controlador;
-
-import com.example.bibliotecafx.modelo.DAO.AutorDAO;
-import com.example.bibliotecafx.modelo.entities.Autor;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class HelloController {
-    @FXML
-    private Label welcomeText;
 
     @FXML
-    protected void onHelloButtonClick() {
+    protected void onLibrosClick(ActionEvent actionEvent) throws IOException {
+        cambiarScene(actionEvent,"/com/example/fxml/libros-view.fxml");
+    }
 
-        new AutorDAO().guardarAutor(new Autor(null,"rodrigo","españa"));
+    @FXML
+    protected void onAutoresClick(ActionEvent actionEvent) throws IOException {
+        cambiarScene(actionEvent,"/com/example/fxml/autores-view.fxml");
+    }
 
-        welcomeText.setText(new AutorDAO().obtenerAutorPorId(1L).toString());
+    @FXML
+    protected void onPrestamosClick(ActionEvent actionEvent) {
+    }
 
+    @FXML
+    protected void onSociosClick(ActionEvent actionEvent) throws IOException {
+        cambiarScene(actionEvent,"/com/example/fxml/socio-view.fxml");
+    }
+
+
+    public static void cambiarScene(ActionEvent actionEvent,String resource) throws IOException {
+        FXMLLoader loader = new FXMLLoader(HelloController.class.getResource(resource));
+        Parent root = loader.load();
+
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        stage.getScene().setRoot(root);
     }
 }

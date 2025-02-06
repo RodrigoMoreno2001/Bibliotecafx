@@ -10,8 +10,8 @@ module com.example.bibliotecafx {
     requires org.hibernate.orm.core;
     exports com.example.bibliotecafx.app;
     opens com.example.bibliotecafx.app to javafx.fxml;
-
-    opens com.example.bibliotecafx.modelo.entities to org.hibernate.orm.core;
-    exports com.example.bibliotecafx.controlador;
+    opens com.example.bibliotecafx.modelo.entities to javafx.base, org.hibernate.orm.core;
     opens com.example.bibliotecafx.controlador to javafx.fxml;
+
+    exports com.example.bibliotecafx.controlador;
 }

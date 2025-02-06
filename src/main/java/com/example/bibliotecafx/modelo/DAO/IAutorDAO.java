@@ -11,7 +11,8 @@ public interface IAutorDAO {
 
     void eliminarAutor(Long idAutor);
 
-    Autor obtenerAutorPorId(Long idAutor);
+
+    List<Autor> obtenerAutorPorNombre(String nombre);
 
     List<Autor> obtenerTodosAutores();
 

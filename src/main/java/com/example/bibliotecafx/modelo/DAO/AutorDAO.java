@@ -5,36 +5,85 @@ import com.example.bibliotecafx.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AutorDAO implements IAutorDAO {
     @Override
     public void guardarAutor(Autor autor) {
+        Transaction transaction=null;
+
         try(Session session=HibernateUtil.getSessionFactory().openSession()){
-            Transaction transaction= session.beginTransaction();
+
+            transaction= session.beginTransaction();
+
             session.persist(autor);
+
             transaction.commit();
+
+        }catch (Exception e){
+
+            if (transaction != null && transaction.isActive()) {
+                transaction.rollback();
+            }
         }
     }
 
     @Override
     public void actualizarAutor(Autor autor) {
+        Transaction transaction=null;
 
+        try(Session session=HibernateUtil.getSessionFactory().openSession()){
+
+            transaction= session.beginTransaction();
+
+            session.merge(autor);
+
+            transaction.commit();
+
+        }catch (Exception e){
+
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        }
     }
 
     @Override
     public void eliminarAutor(Long idAutor) {
+        Transaction transaction=null;
 
+        try(Session session=HibernateUtil.getSessionFactory().openSession()){
+
+            Autor autor = session.get(Autor.class, idAutor);
+
+            if (autor == null) {
+                System.out.println("No se ha encontrado tal usuario");
+                return;
+            }
+
+            transaction= session.beginTransaction();
+
+            session.remove(autor);
+
+            transaction.commit();
+
+        }catch (Exception e){
+
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        }
     }
 
     @Override
-    public Autor obtenerAutorPorId(Long idAutor) {
-        Autor autor=null;
+    public List<Autor> obtenerAutorPorNombre(String nombre) {
+        List<Autor> autor=new ArrayList<>();
         try(Session session = HibernateUtil.getSessionFactory().openSession()) {
 
-            autor = session.createQuery("from Autor where idAutor = :idAutor", Autor.class)
-                    .setParameter("idAutor",idAutor)
-                    .getSingleResult();
+            autor = session.createQuery("from Autor where nombre = :nombre", Autor.class)
+                    .setParameter("nombre",nombre)
+                    .getResultList();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -44,6 +93,16 @@ public class AutorDAO implements IAutorDAO {
 
     @Override
     public List<Autor> obtenerTodosAutores() {
-        return List.of();
+
+        List<Autor> autores = new ArrayList<>();
+
+        try(Session session=HibernateUtil.getSessionFactory().openSession()){
+
+            autores = session.createQuery("from Autor",Autor.class).getResultList();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return autores;
     }
 }
