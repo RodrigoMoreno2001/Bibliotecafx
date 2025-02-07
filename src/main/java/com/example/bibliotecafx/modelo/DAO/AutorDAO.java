@@ -50,17 +50,10 @@ public class AutorDAO implements IAutorDAO {
     }
 
     @Override
-    public void eliminarAutor(Long idAutor) {
+    public void eliminarAutor(Autor autor) {
         Transaction transaction=null;
 
         try(Session session=HibernateUtil.getSessionFactory().openSession()){
-
-            Autor autor = session.get(Autor.class, idAutor);
-
-            if (autor == null) {
-                System.out.println("No se ha encontrado tal usuario");
-                return;
-            }
 
             transaction= session.beginTransaction();
 

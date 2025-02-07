@@ -11,17 +11,16 @@ public class Socio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idSocio;
-
     private String nombre;
     private String direccion;
-    private int tlfn;
+    private Integer telefono;
 
     public Socio(){}
 
-    public Socio(String nombre, String direccion, int tlfn) {
+    public Socio(String nombre, String direccion, Integer telefono) {
         this.nombre = nombre;
         this.direccion = direccion;
-        this.tlfn = tlfn;
+        this.telefono = telefono;
     }
 
     public String getDireccion() {
@@ -40,11 +39,11 @@ public class Socio {
         this.nombre = nombre;
     }
 
-    public int getTlfn() {
-        return tlfn;
+    public Integer getTelefono() {
+        return telefono;
     }
 
-    public void setTlfn(int tlfn) {
-        this.tlfn = tlfn;
+    public void setTelefono(Integer telefono) {
+        this.telefono = telefono;
     }
 }

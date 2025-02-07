@@ -30,7 +30,7 @@ public class AutoresController {
     @FXML
     private TableColumn<Autor, String> columnaNacionalidad;
 
-    ObservableList<Autor> autoresObservableList;
+    private ObservableList<Autor> autoresObservableList;
 
     private AutorDAO autorDAO;
 

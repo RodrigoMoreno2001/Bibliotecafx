@@ -19,5 +19,7 @@
 
         <!-- Mappings -->
         <mapping class="com.example.bibliotecafx.modelo.entities.Autor"/>
+        <mapping class="com.example.bibliotecafx.modelo.entities.Socio"/>
+        <mapping class="com.example.bibliotecafx.modelo.entities.Libro"/>
     </session-factory>
 </hibernate-configuration>

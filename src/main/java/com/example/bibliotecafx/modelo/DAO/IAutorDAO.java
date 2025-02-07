@@ -9,8 +9,7 @@ public interface IAutorDAO {
 
     void actualizarAutor(Autor autor);
 
-    void eliminarAutor(Long idAutor);
-
+    void eliminarAutor(Autor autor);
 
     List<Autor> obtenerAutorPorNombre(String nombre);
 
