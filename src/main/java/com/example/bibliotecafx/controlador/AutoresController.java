@@ -63,7 +63,7 @@ public class AutoresController {
             }
         }
 
-        Autor nuevoAutor= new Autor(10L,NombreText.getText(),NacionalidadText.getText());
+        Autor nuevoAutor= new Autor(null,NombreText.getText(),NacionalidadText.getText());
         autorDAO.guardarAutor(nuevoAutor);
         autoresObservableList.add(nuevoAutor);
     }

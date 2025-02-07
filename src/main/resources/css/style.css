@@ -1,19 +1,23 @@
-
+.root{
+    -fx-font-family:Rockwell;
+}
 #body {
-     -fx-background-color: linear-gradient(rgba(136,107,64,1) 0%, rgba(119,95,61,1) 50%, rgba(85,73,55,1) 100%);
+     -fx-background-color: linear-gradient(rgba(249,236,191,1) 0%, rgba(247,240,216,1) 35%, rgba(245,240,223,1) 100%);
 }
 
 #titulo{
-    -fx-text-fill:#000;
+    -fx-text-fill:#fff;
+    -fx-font-size:61px;
 }
 
 #textoInicio{
-    -fx-text-fill:#000;
-    -fx-background-color:rgba(0,0,0,0.1);
+    -fx-text-fill:#fff;
+    -fx-background-color:rgba(0,0,0,0.2);
+    -fx-font-size:26px;
 }
 
 .boton{
-    -fx-background-color:rgba(0,0,0,0.05);
+    -fx-background-color:rgba(0,0,0,0.1);
     -fx-border-color: #000;
     -fx-border-width: 2px;
     -fx-border-style: solid;
@@ -26,7 +30,7 @@
 .boton:hover {
     -fx-scale-x: 1.02;
     -fx-scale-y: 1.02;
-    -fx-background-color:rgba(255,255,255,0.1);
+    -fx-background-color:rgba(255,255,255,0.2);
     -fx-border-color: #fff;
     -fx-border-width: 2px;
     -fx-border-style: solid;

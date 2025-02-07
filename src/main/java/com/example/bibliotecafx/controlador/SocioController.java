@@ -58,6 +58,8 @@ public class SocioController {
 
         comboBox.getItems().add("Nombre");
         comboBox.getItems().add("Telefono");
+        comboBox.getSelectionModel().select(0);
+        buscarText.setPromptText("Nombre");
 
         comboBox.setOnAction(event -> {
             buscarText.setPromptText(comboBox.getValue().toString());
@@ -76,14 +78,19 @@ public class SocioController {
 
     public void onBuscarClick(ActionEvent actionEvent) {
 
-        System.out.println(comboBox.getValue().toString());
+        String aBuscar = buscarText.getText();
+
+        if(aBuscar.isEmpty()){
+            sociosObservableList.setAll(socioDAO.listarSocios());
+            return;
+        }
 
         switch(comboBox.getValue().toString()){
             case "Nombre":
-                sociosObservableList.setAll(socioDAO.buscarSociosPorNombre(buscarText.getText()));
+                sociosObservableList.setAll(socioDAO.buscarSociosPorNombre(aBuscar));
                 break;
             case "Telefono":
-                sociosObservableList.setAll(socioDAO.buscarSociosPorTelefono(buscarText.getText()));
+                sociosObservableList.setAll(socioDAO.buscarSociosPorTelefono(aBuscar));
                 break;
         }
     }

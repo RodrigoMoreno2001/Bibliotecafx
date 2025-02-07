@@ -6,15 +6,9 @@
 
 <VBox id="body" alignment="TOP_CENTER" prefHeight="720.0" prefWidth="1280.0" spacing="20.0" stylesheets="@../../../css/style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecafx.controlador.HelloController">
    <Label id="titulo" alignment="CENTER" prefHeight="141.0" prefWidth="1280.0" text="BibliotecaFX" textAlignment="CENTER">
-      <font>
-         <Font name="Roboto Light" size="61.0" />
-      </font>
    </Label>
 
-    <Label fx:id="textoInicio" alignment="CENTER" prefHeight="97.0" prefWidth="1280.0" text="¿Qué desea gestionar?" textAlignment="CENTER">
-      <font>
-         <Font name="Roboto Light" size="24.0" />
-      </font></Label>
+    <Label fx:id="textoInicio" alignment="CENTER" prefHeight="97.0" prefWidth="1280.0" text="¿Qué desea gestionar?" textAlignment="CENTER"/>
    <HBox alignment="CENTER" prefHeight="199.0" prefWidth="1280.0" spacing="40.0">
       <children>
           <Button onAction="#onLibrosClick" prefHeight="130.0" prefWidth="260.0" styleClass="boton" text="Libros" />

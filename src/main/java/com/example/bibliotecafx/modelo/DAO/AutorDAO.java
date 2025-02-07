@@ -74,8 +74,8 @@ public class AutorDAO implements IAutorDAO {
         List<Autor> autor=new ArrayList<>();
         try(Session session = HibernateUtil.getSessionFactory().openSession()) {
 
-            autor = session.createQuery("from Autor where nombre = :nombre", Autor.class)
-                    .setParameter("nombre",nombre)
+            autor = session.createQuery("from Autor where nombre LIKE :nombre", Autor.class)
+                    .setParameter("nombre", "%" + nombre + "%")
                     .getResultList();
 
         } catch (Exception e) {
