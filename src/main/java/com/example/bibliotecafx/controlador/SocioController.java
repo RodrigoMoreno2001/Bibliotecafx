@@ -10,6 +10,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.util.converter.DefaultStringConverter;
+import javafx.util.converter.IntegerStringConverter;
 
 import java.io.IOException;
 import java.util.List;
@@ -56,6 +58,13 @@ public class SocioController {
         sociosObservableList = FXCollections.observableArrayList(socios);
         tablaSocios.setItems(sociosObservableList);
 
+        tablaSocios.setEditable(false);
+
+        columnasEditables();
+
+        modoEdicionCheckBox.selectedProperty().addListener((obs, oldVal, newVal) -> {
+            tablaSocios.setEditable(newVal);
+        });
         comboBox.getItems().add("Nombre");
         comboBox.getItems().add("Telefono");
         comboBox.getSelectionModel().select(0);
@@ -63,6 +72,31 @@ public class SocioController {
 
         comboBox.setOnAction(event -> {
             buscarText.setPromptText(comboBox.getValue().toString());
+        });
+    }
+
+    private void columnasEditables() {
+
+        columnaNombre.setCellFactory(TextFieldTableCell.forTableColumn(new DefaultStringConverter()));
+        columnaDireccion.setCellFactory(TextFieldTableCell.forTableColumn(new DefaultStringConverter()));
+        columnaTelefono.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+
+        columnaNombre.setOnEditCommit(event -> {
+            Socio socio = event.getRowValue();
+            socio.setNombre(event.getNewValue());
+            socioDAO.modificarSocio(socio);
+        });
+
+        columnaDireccion.setOnEditCommit(event -> {
+            Socio socio = event.getRowValue();
+            socio.setDireccion(event.getNewValue());
+            socioDAO.modificarSocio(socio);
+        });
+
+        columnaTelefono.setOnEditCommit(event -> {
+            Socio socio = event.getRowValue();
+            socio.setTelefono(event.getNewValue());
+            socioDAO.modificarSocio(socio);
         });
     }
 
@@ -74,6 +108,9 @@ public class SocioController {
         Socio nuevoSocio=new Socio(nombreText.getText(),direccionText.getText(),Integer.parseInt(telefonoText.getText()));
         socioDAO.guardarSocio(nuevoSocio);
         sociosObservableList.add(nuevoSocio);
+        nombreText.setText("");
+        direccionText.setText("");
+        telefonoText.setText("");
     }
 
     public void onBuscarClick(ActionEvent actionEvent) {

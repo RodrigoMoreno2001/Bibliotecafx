@@ -1,29 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox id="body" alignment="TOP_CENTER" prefHeight="720.0" prefWidth="1280.0" spacing="20.0" stylesheets="@../../../css/style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecafx.controlador.AutoresController">
-<children>
+<VBox id="body" prefHeight="720.0" prefWidth="1280.0" spacing="20.0" stylesheets="@../../../css/style.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecafx.controlador.AutoresController">
+    <VBox prefHeight="430.0" prefWidth="1200.0">
+        <children>
+            <HBox prefHeight="82.0" prefWidth="1200.0">
+                <children>
+                    <Button id="botonVolver" mnemonicParsing="false" onAction="#onVolverClick" text="Volver" />
+                    <Label id="tituloGestion" alignment="CENTER" prefHeight="30.0" prefWidth="1100.0" text="Gestion Autores" />
+                </children>
+                <opaqueInsets>
+                    <Insets />
+                </opaqueInsets>
+            </HBox>
 
-    <Label alignment="CENTER" prefHeight="17.0" prefWidth="1282.0" text="Gestión de Autores" />
+            <HBox prefHeight="38.0" prefWidth="1200.0" spacing="20.0">
+                <children>
+                    <Label id="buscarLabel" prefHeight="17.0" prefWidth="64.0" text="Buscar por:" />
+                    <ComboBox id="buscarComboBox" fx:id="comboBox" prefWidth="150.0" />
+                    <TextField id="buscarTextField" fx:id="buscarText" />
+                    <Button id="buscarButton" mnemonicParsing="false" onAction="#onBuscarClick" text="Buscar" />
+                </children>
+                <VBox.margin>
+                    <Insets />
+                </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="1200.0">
+                <children>
+                    <CheckBox fx:id="modoEdicionCheckBox" mnemonicParsing="false" prefHeight="38.0" prefWidth="97.0" text="Modo edición" />
+                </children>
+            </HBox>
 
-    <TableView fx:id="tablaAutores" prefHeight="200.0" prefWidth="500.0">
+            <TableView fx:id="tablaAutores" prefHeight="200.0" prefWidth="500.0">
 
-        <columns>
-            <TableColumn fx:id="columnaId" prefWidth="75.0" text="ID Autor" />
-            <TableColumn fx:id="columnaNombre" prefWidth="150.0" text="Nombre" />
-            <TableColumn fx:id="columnaNacionalidad" prefWidth="150.0" text="Nacionalidad" />
-        </columns>
+                <columns>
+                    <TableColumn fx:id="columnaId" prefWidth="75.0" text="ID Autor" />
+                    <TableColumn fx:id="columnaNombre" prefWidth="150.0" text="Nombre" />
+                    <TableColumn fx:id="columnaNacionalidad" prefWidth="150.0" text="Nacionalidad" />
+                </columns>
 
-    </TableView>
-      <HBox prefHeight="96.0" prefWidth="1280.0" spacing="5.0">
-         <children>
-            <TextField fx:id="idAutorText" prefHeight="25.0" prefWidth="118.0" promptText="id_autor" />
-            <TextField fx:id="NombreText" promptText="Nombre" />
-            <TextField fx:id="NacionalidadText" promptText="Nacionalidad" />
-            <Button onAction="#onAnyadirClick" mnemonicParsing="false" text="Añadir" />
-         </children></HBox>
+            </TableView>
 
-</children>
+            <AnchorPane prefHeight="39.0" prefWidth="1280.0">
+                <children>
+
+                    <TextField fx:id="nombreText" layoutY="14.0" promptText="Nombre" styleClass="anyadirTextField" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="14.0" />
+
+                    <TextField fx:id="nacionalidadText" layoutX="168.0" layoutY="14.0" promptText="Nacionalidad" styleClass="anyadirTextField" AnchorPane.leftAnchor="168.0" AnchorPane.topAnchor="14.0" />
+
+                    <Button id="anyadirButton" layoutX="497.0" layoutY="14.0" mnemonicParsing="false" onAction="#onAnyadirClick" text="Añadir Registro" AnchorPane.leftAnchor="497.0" AnchorPane.topAnchor="14.0" />
+
+                    <Button layoutX="1177.0" layoutY="14.0" mnemonicParsing="false" onAction="#onEliminarClick" styleClass="EliminarRegistro" text="Eliminar registro" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="14.0" />
+                </children>
+            </AnchorPane>
+
+
+        </children>
+
+        <padding>
+            <Insets top="20.0" />
+        </padding>
+
+    </VBox>
+    <padding>
+        <Insets bottom="40.0" left="40.0" right="40.0" />
+    </padding>
 </VBox>
