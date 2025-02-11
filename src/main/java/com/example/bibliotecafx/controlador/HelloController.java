@@ -12,7 +12,7 @@ public class HelloController {
 
     @FXML
     protected void onLibrosClick(ActionEvent actionEvent) throws IOException {
-        cambiarScene(actionEvent,"/com/example/fxml/libros-view.fxml");
+        cambiarScene(actionEvent,"/com/example/fxml/libro-view.fxml");
     }
 
     @FXML

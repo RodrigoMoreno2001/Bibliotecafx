@@ -2,27 +2,40 @@ package com.example.bibliotecafx.modelo.entities;
 
 import jakarta.persistence.*;
 
-import java.sql.Date;
-import java.util.List;
-
 @Entity
 public class Libro {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_libro")
+    private Long idLibro;
     private String ISBN;
-
     private String titulo;
-    private Date fechaPublicacion;
-    private boolean disponible;
+    private String editorial;
+    private Integer anyoPublicacion;
+    @ManyToOne
+    @JoinColumn(name = "id_autor", nullable = false)
+    private Autor autor;
+    
+    public Libro() {}
+    
+    public Libro(Long idLibro, String ISBN, String titulo,String editorial, Integer anyoPublicacion, Autor autor) {
+        this.idLibro = idLibro;
+        this.ISBN = ISBN;
+        this.titulo = titulo;
+        this.anyoPublicacion = anyoPublicacion;
+        this.autor = autor;
+        this.editorial=editorial;
+    }
 
-    @ManyToMany
-    @JoinTable(
-            name = "libro_autor",
-            joinColumns = @JoinColumn(name = "ISBN"),
-            inverseJoinColumns = @JoinColumn(name = "id_autor")
-    )
+    public String getEditorial() {
+        return editorial;
+    }
 
-    private List<Autor> autores;
+    public void setEditorial(String editorial) {
+        this.editorial = editorial;
+    }
+
     public String getISBN() {
         return ISBN;
     }
@@ -39,27 +52,27 @@ public class Libro {
         this.titulo = titulo;
     }
 
-    public Date getFechaPublicacion() {
-        return fechaPublicacion;
+    public Integer getAnyoPublicacion() {
+        return anyoPublicacion;
     }
 
-    public void setFechaPublicacion(Date fechaPublicacion) {
-        this.fechaPublicacion = fechaPublicacion;
+    public void setAnyoPublicacion(Integer anyoPublicacion) {
+        this.anyoPublicacion = anyoPublicacion;
     }
 
-    public boolean isDisponible() {
-        return disponible;
+    public Autor getAutor() {
+        return autor;
     }
 
-    public void setDisponible(boolean disponible) {
-        this.disponible = disponible;
+    public void setAutor(Autor autor) {
+        this.autor = autor;
     }
 
-    public List<Autor> getAutores() {
-        return autores;
+    public Long getIdLibro() {
+        return idLibro;
     }
 
-    public void setAutores(List<Autor> autores) {
-        this.autores = autores;
+    public void setIdLibro(Long idLibro) {
+        this.idLibro = idLibro;
     }
 }

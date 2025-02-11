@@ -8,7 +8,7 @@ public class Prestamo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idPrestamo;
 
     @ManyToOne
     @JoinColumn(name = "id_socio", nullable = false)
@@ -30,8 +30,8 @@ public class Prestamo {
         this.fechaDevolucion = fechaDevolucion;
     }
 
-    public Long getId() {
-        return id;
+    public Long getIdPrestamo() {
+        return idPrestamo;
     }
 
     public Socio getSocio() {
@@ -69,7 +69,7 @@ public class Prestamo {
     @Override
     public String toString() {
         return "Prestamo{" +
-                "id=" + id +
+                "id=" + idPrestamo +
                 ", socio=" + socio.getNombre() +
                 ", libro=" + libro.getTitulo() +
                 ", fechaPrestamo=" + fechaPrestamo +

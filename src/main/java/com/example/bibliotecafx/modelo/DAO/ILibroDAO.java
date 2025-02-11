@@ -9,10 +9,14 @@ public interface ILibroDAO {
 
     void actualizarLibro(Libro libro);
 
-    void eliminarLibro(String ISBN);
+    void eliminarLibro(Libro libro);
 
     Libro obtenerLibroPorISBN(String ISBN);
 
     List<Libro> obtenerTodosLibros();
+
+    Libro obtenerLibrosPorTitulo(String aBuscar);
+
+    Libro obtenerLibrosPorAutor(String aBuscar);
 }
 
