@@ -4,81 +4,53 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5eef71cf-acc4-4538-aeac-59e266bd709a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/bibliotecafx/controlador/LibroController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/fxml/libro-view.fxml" afterDir="false" />
+    <list default="true" id="d2ea6086-857a-40ad-8eb7-5f70e3a73223" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/bibliotecafx/controlador/PrestamoController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/bibliotecafx/util/DatePickerTableCell.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/fxml/prestamo-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bibliotecafx/controlador/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bibliotecafx/controlador/HelloController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bibliotecafx/controlador/LibroController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bibliotecafx/controlador/LibroController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bibliotecafx/controlador/SocioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bibliotecafx/controlador/SocioController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bibliotecafx/modelo/DAO/ILibroDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bibliotecafx/modelo/DAO/ILibroDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bibliotecafx/modelo/DAO/IPrestamoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bibliotecafx/modelo/DAO/IPrestamoDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bibliotecafx/modelo/DAO/LibroDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bibliotecafx/modelo/DAO/LibroDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bibliotecafx/modelo/entities/Autor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bibliotecafx/modelo/entities/Autor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bibliotecafx/modelo/DAO/PrestamoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bibliotecafx/modelo/DAO/PrestamoDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bibliotecafx/modelo/entities/Libro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bibliotecafx/modelo/entities/Libro.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bibliotecafx/modelo/entities/Prestamo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bibliotecafx/modelo/entities/Prestamo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/bibliotecafx/modelo/entities/Socio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/bibliotecafx/modelo/entities/Socio.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/fxml/autores-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/fxml/autores-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/fxml/socio-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/fxml/socio-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/fxml/libro-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/fxml/libro-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="FxmlFile" />
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
-      </MavenGeneralSettings>
-    </option>
-  </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 5
-}</component>
-  <component name="ProjectId" id="2sdHOQGbiv1nNnXaoWGi0Ihe3gL" />
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 1
+}]]></component>
+  <component name="ProjectId" id="2suiF9hKaH7gZrZOQ4nekNjA8gi" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Unnamed.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/rodri/IdeaProjects/Bibliotecafx&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.completion&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.HelloApplication.executor": "Run",
+    "Application.Unnamed.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/rodri/Desktop/temp2/ee2/Bibliotecafx/Bibliotecafx"
   }
-}</component>
-  <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.example.bibliotecafx.modelo.DAO" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\rodri\IdeaProjects\Bibliotecafx\src\main\resources\com\example\fxml" />
-      <recent name="C:\Users\rodri\IdeaProjects\Bibliotecafx\src\main\java\com\example\bibliotecafx\controlador" />
-      <recent name="C:\Users\alumno\Desktop\temp\Bibliotecafx\src\main\resources\css" />
-      <recent name="C:\Users\alumno\Desktop\temp\Bibliotecafx\src\main\resources\com\example\fxml" />
-      <recent name="C:\Users\alumno\Desktop\temp\Bibliotecafx\src\main\resources" />
-    </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="" />
-    </key>
-  </component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.bibliotecafx.app.HelloApplication" />
@@ -91,11 +63,11 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="5eef71cf-acc4-4538-aeac-59e266bd709a" name="Changes" comment="" />
-      <created>1738778498890</created>
+      <changelist id="d2ea6086-857a-40ad-8eb7-5f70e3a73223" name="Changes" comment="" />
+      <created>1739311753247</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1738778498890</updated>
+      <updated>1739311753247</updated>
     </task>
     <servers />
   </component>

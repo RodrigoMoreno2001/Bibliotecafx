@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PrestamoDAO implements IPrestamoDAO {
+
     @Override
     public void guardarPrestamo(Prestamo prestamo) {
         try(Session session= HibernateUtil.getSessionFactory().openSession()){
@@ -37,7 +38,27 @@ public class PrestamoDAO implements IPrestamoDAO {
     }
 
     @Override
-    public List<Prestamo> obtenerPrestamos(String nombre) {
+    public void actualizarPrestamo(Prestamo prestamo) {
+        Transaction transaction=null;
+
+        try(Session session= HibernateUtil.getSessionFactory().openSession()){
+
+            transaction= session.beginTransaction();
+
+            session.merge(prestamo);
+
+            transaction.commit();
+
+        }catch (Exception e){
+
+            if (transaction != null && transaction.isActive()) {
+                transaction.rollback();
+            }
+        }
+    }
+
+    @Override
+    public List<Prestamo> obtenerPrestamos() {
         List<Prestamo> prestamos=new ArrayList<>();
         try(Session session = HibernateUtil.getSessionFactory().openSession()) {
 
@@ -51,6 +72,17 @@ public class PrestamoDAO implements IPrestamoDAO {
 
     @Override
     public List<Prestamo> obtenerPrestamosActuales() {
-        return List.of();
+
+        List<Prestamo> prestamos=new ArrayList<>();
+
+        try(Session session = HibernateUtil.getSessionFactory().openSession()) {
+
+            prestamos = session.createQuery("from Prestamo ", Prestamo.class).getResultList();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return prestamos;
+
     }
 }

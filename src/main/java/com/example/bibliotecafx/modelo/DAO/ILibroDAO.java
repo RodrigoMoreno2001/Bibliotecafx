@@ -1,5 +1,6 @@
 package com.example.bibliotecafx.modelo.DAO;
 
+import com.example.bibliotecafx.modelo.entities.Autor;
 import com.example.bibliotecafx.modelo.entities.Libro;
 import java.util.List;
 
@@ -15,8 +16,8 @@ public interface ILibroDAO {
 
     List<Libro> obtenerTodosLibros();
 
-    Libro obtenerLibrosPorTitulo(String aBuscar);
+    List<Libro> obtenerLibrosPorTitulo(String titulo);
 
-    Libro obtenerLibrosPorAutor(String aBuscar);
+    List<Libro> obtenerLibrosPorAutor(Autor autor);
 }
 

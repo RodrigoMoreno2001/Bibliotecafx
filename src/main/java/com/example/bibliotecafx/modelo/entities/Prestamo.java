@@ -8,6 +8,7 @@ public class Prestamo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JoinColumn(name = "id_prestamo")
     private Long idPrestamo;
 
     @ManyToOne
@@ -15,7 +16,7 @@ public class Prestamo {
     private Socio socio;
 
     @ManyToOne
-    @JoinColumn(name = "ISBN", nullable = false)
+    @JoinColumn(name = "id_libro", nullable = false)
     private Libro libro;
 
     private LocalDate fechaPrestamo;

@@ -21,7 +21,8 @@ public class HelloController {
     }
 
     @FXML
-    protected void onPrestamosClick(ActionEvent actionEvent) {
+    protected void onPrestamosClick(ActionEvent actionEvent) throws IOException {
+        cambiarScene(actionEvent,"/com/example/fxml/prestamo-view.fxml");
     }
 
     @FXML

@@ -75,4 +75,9 @@ public class Libro {
     public void setIdLibro(Long idLibro) {
         this.idLibro = idLibro;
     }
+
+    @Override
+    public String toString(){
+        return titulo;
+    }
 }

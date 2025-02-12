@@ -1,6 +1,7 @@
 package com.example.bibliotecafx.modelo.DAO;
 
 import com.example.bibliotecafx.modelo.entities.Autor;
+import com.example.bibliotecafx.modelo.entities.Libro;
 import com.example.bibliotecafx.modelo.entities.Prestamo;
 
 import java.util.List;
@@ -11,7 +12,9 @@ public interface IPrestamoDAO {
 
     void eliminarPrestamo(Prestamo prestamo);
 
-    List<Prestamo> obtenerPrestamos(String nombre);
+    void actualizarPrestamo(Prestamo prestamo);
+
+    List<Prestamo> obtenerPrestamos();
 
     List<Prestamo> obtenerPrestamosActuales();
 

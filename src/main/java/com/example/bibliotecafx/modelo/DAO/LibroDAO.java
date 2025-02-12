@@ -52,8 +52,8 @@ public class LibroDAO implements ILibroDAO {
         try(Session session = HibernateUtil.getSessionFactory().openSession()) {
 
             libro = session.createQuery("from Libro where ISBN = :ISBN", Libro.class)
-                    .setParameter("id_autor",ISBN)
-                    .getSingleResult();
+                    .setParameter("ISBN",ISBN)
+                    .getResultList().get(0);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -78,12 +78,37 @@ public class LibroDAO implements ILibroDAO {
     }
 
     @Override
-    public Libro obtenerLibrosPorTitulo(String aBuscar) {
-        return null;
+    public List<Libro> obtenerLibrosPorTitulo(String titulo) {
+
+        List<Libro> libros = new ArrayList<>();
+
+        try(Session session = HibernateUtil.getSessionFactory().openSession()) {
+
+            libros = session.createQuery("from Libro where titulo = :titulo", Libro.class)
+                    .setParameter("titulo",titulo)
+                    .getResultList();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return libros;
     }
 
     @Override
-    public Libro obtenerLibrosPorAutor(String aBuscar) {
-        return null;
+    public List<Libro> obtenerLibrosPorAutor(Autor autor) {
+        List<Libro> libros = new ArrayList<>();
+
+        try(Session session = HibernateUtil.getSessionFactory().openSession()) {
+
+
+
+            libros = session.createQuery("from Libro where autor = :autor", Libro.class)
+                    .setParameter("autor",autor)
+                    .getResultList();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return libros;
     }
 }

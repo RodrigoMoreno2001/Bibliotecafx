@@ -1,15 +1,13 @@
 package com.example.bibliotecafx.modelo.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Socio {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_socio")
     private Long idSocio;
     private String nombre;
     private String direccion;
@@ -46,4 +44,10 @@ public class Socio {
     public void setTelefono(Integer telefono) {
         this.telefono = telefono;
     }
+
+    @Override
+    public String toString(){
+        return nombre;
+    }
+
 }

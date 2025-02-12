@@ -17,25 +17,16 @@ import java.io.IOException;
 import java.util.List;
 
 public class SocioController {
-    @FXML
+
     public ComboBox comboBox;
-    @FXML
     public TableView<Socio> tablaSocios;
-    @FXML
     public TableColumn<Socio, Integer> columnaTelefono;
-    @FXML
     public TableColumn<Socio,String> columnaDireccion;
-    @FXML
     public TableColumn<Socio,String> columnaNombre;
-    @FXML
     public TextField direccionText;
-    @FXML
     public TextField telefonoText;
-    @FXML
     public TextField nombreText;
-    @FXML
     public TextField buscarText;
-    @FXML
     public CheckBox modoEdicionCheckBox;
 
     private ObservableList<Socio> sociosObservableList;

@@ -42,7 +42,8 @@ public class LibroController {
     private LibroDAO libroDAO=new LibroDAO();
 
     public void initialize() {
-        for(Autor aux:autorDAO.obtenerTodosAutores()) autorComboBox.getItems().add(aux);
+
+        autorComboBox.setItems(FXCollections.observableArrayList(autorDAO.obtenerTodosAutores()));
 
         columnaId.setCellValueFactory(new PropertyValueFactory<>("idLibro"));
         columnaTitulo.setCellValueFactory(new PropertyValueFactory<>("Titulo"));
@@ -59,6 +60,7 @@ public class LibroController {
         modoEdicionCheckBox.selectedProperty().addListener((obs, oldVal, newVal) -> {
             tablaLibros.setEditable(newVal);
         });
+
         buscarComboBox.getItems().add("Título");
         buscarComboBox.getItems().add("Autor");
         buscarComboBox.getItems().add("ISBN");
@@ -130,7 +132,7 @@ public class LibroController {
                 librosObservableList.setAll(libroDAO.obtenerLibroPorISBN(aBuscar));
                 break;
             case "Autor":
-                librosObservableList.setAll(libroDAO.obtenerLibrosPorAutor(aBuscar));
+                librosObservableList.setAll(libroDAO.obtenerLibrosPorAutor(autorDAO.obtenerAutorPorNombre(aBuscar).get(0)));
                 break;
         }
 
