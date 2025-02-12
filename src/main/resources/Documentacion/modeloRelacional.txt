@@ -1,0 +1,7 @@
+autor[id_autor(PK), nombre, nacionalidad]
+
+libro[id_libro(PK), ISBN, titulo, editorial, anyo_publicacion, id_autor(FK)]
+
+socio[id_socio(PK), nombre, direccion, telefono]
+
+prestamo[id_prestamo(PK), id_socio(FK), id_libro(FK), fecha_prestamo, fecha_devolucion]

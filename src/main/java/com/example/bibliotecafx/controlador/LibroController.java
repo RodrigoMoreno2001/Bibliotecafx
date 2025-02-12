@@ -20,7 +20,6 @@ import java.io.IOException;
 import java.util.List;
 
 public class LibroController {
-    @FXML
     public ComboBox<Autor> autorComboBox;
     public TextField tituloText;
     public TextField ISBNText;
@@ -43,7 +42,39 @@ public class LibroController {
 
     public void initialize() {
 
+        configurarTabla();
+
+        configurarBusqueda();
+
+        columnasEditables();
+
+        modoEdicionCheckBox.selectedProperty().addListener((obs, oldVal, newVal) -> {
+            tablaLibros.setEditable(newVal);
+        });
+
         autorComboBox.setItems(FXCollections.observableArrayList(autorDAO.obtenerTodosAutores()));
+    }
+
+    private void configurarBusqueda() {
+
+        buscarComboBox.getItems().add("Título");
+        buscarComboBox.getItems().add("Autor");
+        buscarComboBox.getItems().add("ISBN");
+        buscarComboBox.getItems().add("Disponibles");
+
+        buscarComboBox.getSelectionModel().select(0);
+        buscarText.setPromptText("Título");
+
+        buscarComboBox.setOnAction(event -> {
+            buscarText.setPromptText(buscarComboBox.getValue().toString());
+
+            if(buscarComboBox.getValue().toString().equals("Disponibles"))
+                librosObservableList.setAll(libroDAO.obtenerLibrosDisponibles());
+        });
+
+    }
+
+    private void configurarTabla() {
 
         columnaId.setCellValueFactory(new PropertyValueFactory<>("idLibro"));
         columnaTitulo.setCellValueFactory(new PropertyValueFactory<>("Titulo"));
@@ -56,20 +87,6 @@ public class LibroController {
         librosObservableList = FXCollections.observableArrayList(libros);
         tablaLibros.setItems(librosObservableList);
 
-        columnasEditables();
-        modoEdicionCheckBox.selectedProperty().addListener((obs, oldVal, newVal) -> {
-            tablaLibros.setEditable(newVal);
-        });
-
-        buscarComboBox.getItems().add("Título");
-        buscarComboBox.getItems().add("Autor");
-        buscarComboBox.getItems().add("ISBN");
-        buscarComboBox.getSelectionModel().select(0);
-        buscarText.setPromptText("Título");
-
-        buscarComboBox.setOnAction(event -> {
-            buscarText.setPromptText(buscarComboBox.getValue().toString());
-        });
     }
 
     private void columnasEditables() {

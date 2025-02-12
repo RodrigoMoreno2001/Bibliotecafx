@@ -27,7 +27,6 @@ import java.util.List;
 public class PrestamoController {
 
     public ComboBox buscarComboBox;
-    public TextField buscarText;
     public CheckBox modoEdicionCheckBox;
     public TableView<Prestamo> tablaPrestamos;
     public TableColumn<Prestamo,Long> columnaId;
@@ -47,9 +46,32 @@ public class PrestamoController {
     private ObservableList<Prestamo> prestamosObservableList;
 
     public void initialize() {
+        configurarTabla();
+
+        configurarBusqueda();
+
+        columnasEditables();
+
+        modoEdicionCheckBox.selectedProperty().addListener((obs, oldVal, newVal) -> {
+            tablaPrestamos.setEditable(newVal);
+            columnaPrestamo.setEditable(newVal);
+            columnaDevolucion.setEditable(newVal);
+        });
 
         libroComboBox.setItems(FXCollections.observableArrayList(libroDAO.obtenerTodosLibros()));
         socioComboBox.setItems(FXCollections.observableArrayList(socioDAO.listarSocios()));
+
+    }
+
+    private void configurarBusqueda() {
+
+        buscarComboBox.getItems().add("Todos");
+        buscarComboBox.getItems().add("Prestados");
+        buscarComboBox.getSelectionModel().select(0);
+
+    }
+
+    private void configurarTabla() {
 
         columnaId.setCellValueFactory(new PropertyValueFactory<>("idPrestamo"));
         columnaLibro.setCellValueFactory(new PropertyValueFactory<>("libro"));
@@ -60,24 +82,6 @@ public class PrestamoController {
         List<Prestamo> prestamos = prestamoDAO.obtenerPrestamos();
         prestamosObservableList = FXCollections.observableArrayList(prestamos);
         tablaPrestamos.setItems(prestamosObservableList);
-
-        buscarComboBox.getItems().add("Socio");
-        buscarComboBox.getItems().add("Prestados");
-        buscarComboBox.getSelectionModel().select(0);
-        buscarText.setPromptText("Socio");
-
-        buscarComboBox.setOnAction(event -> {
-            buscarText.setPromptText(buscarComboBox.getValue().toString());
-        });
-
-        columnasEditables();
-
-        modoEdicionCheckBox.selectedProperty().addListener((obs, oldVal, newVal) -> {
-            tablaPrestamos.setEditable(newVal);
-            columnaPrestamo.setEditable(newVal);
-            columnaDevolucion.setEditable(newVal);
-            tablaPrestamos.refresh();
-        });
 
     }
 
@@ -119,7 +123,16 @@ public class PrestamoController {
     }
 
     public void onBuscarClick(ActionEvent actionEvent) {
-        
+
+        switch(buscarComboBox.getValue().toString()){
+            case "Todos":
+                prestamosObservableList.setAll(prestamoDAO.obtenerPrestamos());
+                break;
+            case "Prestados":
+                prestamosObservableList.setAll(prestamoDAO.obtenerPrestamosActuales());
+                break;
+        }
+
     }
 
     public void onAnyadirClick(ActionEvent actionEvent) {

@@ -31,15 +31,36 @@ public class SocioController {
 
     private ObservableList<Socio> sociosObservableList;
 
-    private SocioDAO socioDAO;
-
-    public SocioController(){
-        socioDAO=new SocioDAO();
-        sociosObservableList=null;
-    }
+    private SocioDAO socioDAO=new SocioDAO();
 
     @FXML
     public void initialize() {
+
+        configurarTabla();
+
+        configurarBusqueda();
+
+        columnasEditables();
+
+        modoEdicionCheckBox.selectedProperty().addListener((obs, oldVal, newVal) -> {
+            tablaSocios.setEditable(newVal);
+        });
+    }
+
+    private void configurarBusqueda() {
+
+        comboBox.getItems().add("Nombre");
+        comboBox.getItems().add("Telefono");
+        comboBox.getSelectionModel().select(0);
+        buscarText.setPromptText("Nombre");
+
+        comboBox.setOnAction(event -> {
+            buscarText.setPromptText(comboBox.getValue().toString());
+        });
+
+    }
+
+    private void configurarTabla() {
 
         columnaTelefono.setCellValueFactory(new PropertyValueFactory<>("telefono"));
         columnaNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
@@ -49,21 +70,6 @@ public class SocioController {
         sociosObservableList = FXCollections.observableArrayList(socios);
         tablaSocios.setItems(sociosObservableList);
 
-        tablaSocios.setEditable(false);
-
-        columnasEditables();
-
-        modoEdicionCheckBox.selectedProperty().addListener((obs, oldVal, newVal) -> {
-            tablaSocios.setEditable(newVal);
-        });
-        comboBox.getItems().add("Nombre");
-        comboBox.getItems().add("Telefono");
-        comboBox.getSelectionModel().select(0);
-        buscarText.setPromptText("Nombre");
-
-        comboBox.setOnAction(event -> {
-            buscarText.setPromptText(comboBox.getValue().toString());
-        });
     }
 
     private void columnasEditables() {

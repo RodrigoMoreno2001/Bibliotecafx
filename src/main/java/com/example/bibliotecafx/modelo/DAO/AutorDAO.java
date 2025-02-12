@@ -23,7 +23,7 @@ public class AutorDAO implements IAutorDAO {
 
         }catch (Exception e){
 
-            if (transaction != null && transaction.isActive()) {
+            if (transaction != null) {
                 transaction.rollback();
             }
         }

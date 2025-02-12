@@ -14,5 +14,4 @@ public interface IAutorDAO {
     List<Autor> obtenerAutorPorNombre(String nombre);
 
     List<Autor> obtenerTodosAutores();
-
 }

@@ -1,6 +1,9 @@
 package com.example.bibliotecafx.modelo.entities;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import java.time.LocalDate;
 
 @Entity
@@ -17,6 +20,7 @@ public class Prestamo {
 
     @ManyToOne
     @JoinColumn(name = "id_libro", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Libro libro;
 
     private LocalDate fechaPrestamo;

@@ -1,6 +1,8 @@
 package com.example.bibliotecafx.modelo.entities;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 public class Libro {
@@ -15,6 +17,7 @@ public class Libro {
     private Integer anyoPublicacion;
     @ManyToOne
     @JoinColumn(name = "id_autor", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Autor autor;
     
     public Libro() {}

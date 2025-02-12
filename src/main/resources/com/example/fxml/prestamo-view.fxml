@@ -10,7 +10,7 @@
             <HBox alignment="CENTER" prefHeight="79.0" prefWidth="1200.0">
                 <children>
                     <Button mnemonicParsing="false" onAction="#onVolverClick" styleClass="botonGestion" text="&lt;Volver" />
-                    <Label id="tituloGestion" alignment="CENTER" prefHeight="30.0" prefWidth="1100.0" text="Gestion Libros" />
+                    <Label id="tituloGestion" alignment="CENTER" prefHeight="30.0" prefWidth="1100.0" text="Gestion Prestamos" />
                 </children>
                 <opaqueInsets>
                     <Insets />
@@ -23,7 +23,6 @@
                         <children>
                             <Label id="buscarLabel" prefHeight="17.0" prefWidth="64.0" text="Buscar por:" />
                             <ComboBox id="buscarComboBox" fx:id="buscarComboBox" prefWidth="150.0" />
-                            <TextField id="buscarTextField" fx:id="buscarText" />
                             <Button id="buscarButton" mnemonicParsing="false" onAction="#onBuscarClick" styleClass="botonGestion" text="Buscar" />
                         </children>
                     </HBox>

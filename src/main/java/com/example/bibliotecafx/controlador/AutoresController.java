@@ -17,9 +17,7 @@ import java.io.IOException;
 import java.util.List;
 
 public class AutoresController {
-    @FXML
     public TextField nombreText;
-    @FXML
     public TextField nacionalidadText;
     @FXML
     private TableView<Autor> tablaAutores;
@@ -29,40 +27,19 @@ public class AutoresController {
     private TableColumn<Autor, String> columnaNombre;
     @FXML
     private TableColumn<Autor, String> columnaNacionalidad;
-    @FXML
     public TextField buscarText;
-    @FXML
     public CheckBox modoEdicionCheckBox;
-    @FXML
     public ComboBox comboBox;
 
     private ObservableList<Autor> autoresObservableList;
 
-    private AutorDAO autorDAO;
-
-    // Constructor
-    public AutoresController() {
-        this.autorDAO = new AutorDAO();
-        autoresObservableList=null;
-    }
+    private AutorDAO autorDAO=new AutorDAO();
 
     public void initialize() {
-        columnaId.setCellValueFactory(new PropertyValueFactory<>("idAutor"));
-        columnaNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-        columnaNacionalidad.setCellValueFactory(new PropertyValueFactory<>("nacionalidad"));
+        
+        configurarTabla();
 
-        List<Autor> autores = autorDAO.obtenerTodosAutores();
-        autoresObservableList = FXCollections.observableArrayList(autores);
-        tablaAutores.setItems(autoresObservableList);
-
-        comboBox.getItems().add("Nombre");
-        comboBox.getSelectionModel().select(0);
-        buscarText.setPromptText("Nombre");
-
-        comboBox.setOnAction(event -> {
-            buscarText.setPromptText(comboBox.getValue().toString());
-        });
-
+        configurarBusqueda();
 
         columnasEditables();
 
@@ -70,6 +47,26 @@ public class AutoresController {
             tablaAutores.setEditable(newVal);
         });
 
+    }
+
+    private void configurarBusqueda() {
+        comboBox.getItems().add("Nombre");
+        comboBox.getSelectionModel().select(0);
+        buscarText.setPromptText("Nombre");
+
+        comboBox.setOnAction(event -> {
+            buscarText.setPromptText(comboBox.getValue().toString());
+        });
+    }
+
+    private void configurarTabla(){
+        columnaId.setCellValueFactory(new PropertyValueFactory<>("idAutor"));
+        columnaNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        columnaNacionalidad.setCellValueFactory(new PropertyValueFactory<>("nacionalidad"));
+
+        List<Autor> autores = autorDAO.obtenerTodosAutores();
+        autoresObservableList = FXCollections.observableArrayList(autores);
+        tablaAutores.setItems(autoresObservableList);
     }
 
     private void columnasEditables() {
@@ -89,7 +86,6 @@ public class AutoresController {
             autorDAO.actualizarAutor(autor);
         });
     }
-
 
     public void onAnyadirClick(ActionEvent actionEvent) {
         Autor nuevoAutor= new Autor(null,nombreText.getText(),nacionalidadText.getText());

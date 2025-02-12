@@ -6,6 +6,7 @@ import com.example.bibliotecafx.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,7 +42,22 @@ public class LibroDAO implements ILibroDAO {
 
     @Override
     public void eliminarLibro(Libro libro) {
+        Transaction transaction=null;
 
+        try(Session session= HibernateUtil.getSessionFactory().openSession()){
+
+            transaction= session.beginTransaction();
+
+            session.remove(libro);
+
+            transaction.commit();
+
+        }catch (Exception e){
+
+            if (transaction != null && transaction.isActive()) {
+                transaction.rollback();
+            }
+        }
     }
 
     @Override
@@ -104,6 +120,24 @@ public class LibroDAO implements ILibroDAO {
 
             libros = session.createQuery("from Libro where autor = :autor", Libro.class)
                     .setParameter("autor",autor)
+                    .getResultList();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return libros;
+    }
+    @Override
+    public List<Libro> obtenerLibrosDisponibles() {
+
+        LocalDate fechaHoy=LocalDate.now();
+
+        List<Libro> libros = new ArrayList<>();
+
+        try(Session session = HibernateUtil.getSessionFactory().openSession()) {
+
+            libros = session.createQuery("select l from Libro l left join Prestamo p ON l.idLibro = p.libro.id where p.idPrestamo is null or p.fechaDevolucion <= :fechaHoy", Libro.class)
+                    .setParameter("fechaHoy",fechaHoy)
                     .getResultList();
 
         } catch (Exception e) {

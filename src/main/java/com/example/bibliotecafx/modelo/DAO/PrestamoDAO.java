@@ -6,6 +6,7 @@ import com.example.bibliotecafx.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -72,12 +73,14 @@ public class PrestamoDAO implements IPrestamoDAO {
 
     @Override
     public List<Prestamo> obtenerPrestamosActuales() {
-
+        LocalDate fechaHoy=LocalDate.now();
         List<Prestamo> prestamos=new ArrayList<>();
 
         try(Session session = HibernateUtil.getSessionFactory().openSession()) {
 
-            prestamos = session.createQuery("from Prestamo ", Prestamo.class).getResultList();
+            prestamos = session.createQuery("from Prestamo where fechaDevolucion is null or fechaDevolucion > :fechaHoy ", Prestamo.class)
+                    .setParameter("fechaHoy",fechaHoy)
+                    .getResultList();
 
         } catch (Exception e) {
             e.printStackTrace();
